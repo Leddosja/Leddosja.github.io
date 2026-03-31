@@ -1,104 +1,223 @@
-<style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  body {
-    font-family: 'Inter', sans-serif;
-    background: #0f172a;
-    color: #e2e8f0;
-    line-height: 1.6;
-  }
+body {
+  font-family: 'Inter', sans-serif;
+  background: radial-gradient(circle at top, #1e293b, #020617);
+  color: #e2e8f0;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
 
-  header {
-    text-align: center;
-    padding: 100px 20px 60px;
-    animation: fadeIn 1s ease;
-  }
+.navbar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  z-index: 1000;
+}
 
-  h1 {
-    font-size: 3rem;
-    font-weight: 600;
-  }
+.nav-container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-  header p {
-    margin-top: 10px;
-    color: #94a3b8;
-  }
+.logo {
+  font-weight: 600;
+  font-size: 1.2rem;
+}
 
-  .container {
-    max-width: 1000px;
-    margin: auto;
-    padding: 20px;
-  }
+.nav-links a {
+  position: relative;
+  margin-left: 20px;
+  text-decoration: none;
+  color: #94a3b8;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
 
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-  }
+/* linea animata sotto */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 2px;
+  background: #38bdf8;
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
 
-  .card {
-    background: rgba(30, 41, 59, 0.7);
-    border-radius: 16px;
-    padding: 25px;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.05);
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-  }
+/* hover */
+.nav-links a:hover {
+  color: #38bdf8;
+  text-shadow: 0 0 8px rgba(56,189,248,0.5);
+}
 
-  .card:hover {
-    transform: translateY(-5px);
-    border-color: #38bdf8;
-  }
+.nav-links a:hover::after {
+  width: 100%;
+}
 
-  .card h2 {
-    margin-bottom: 10px;
-    font-size: 1.3rem;
-  }
+.profile-img {
+  width: 250px;
+  height: 250px;
+  border-radius: 60%;
+  object-fit: cover;
+  margin-bottom: 40px;
+  margin-top: -40px;
 
-  .card p {
-    color: #94a3b8;
-    font-size: 0.95rem;
-  }
+  border: 2px solid rgba(255,255,255,0.1);
 
-  .card a {
-    color: #38bdf8;
-    text-decoration: none;
-  }
+  /* glow base leggero */
+  box-shadow: 0 0 15px rgba(56,189,248,0.15);
 
-  .card a:hover {
-    text-decoration: underline;
-  }
+  transition: all 0.4s ease;
+}
 
-  .tag {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 5px 10px;
-    background: rgba(56,189,248,0.1);
-    border-radius: 8px;
-    font-size: 0.8rem;
-  }
+/* 🔥 EFFETTO HOVER LED */
+.profile-img:hover {
+  transform: scale(1.1);
 
-  footer {
-    text-align: center;
-    padding: 40px 20px;
-    color: #64748b;
-    font-size: 0.85rem;
-  }
+  box-shadow:
+    0 0 15px rgba(56,189,248,0.6),
+    0 0 30px rgba(56,189,248,0.8),
+    0 0 60px rgba(56,189,248,0.6);
 
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  border-color: #38bdf8;
+}
+
+header {
+  text-align: center;
+  padding: 140px 20px 80px;
+}
+
+/* ===== HEADER ===== */
+header {
+  text-align: center;
+  padding: 120px 20px 80px;
+  animation: fadeUp 1s ease;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+header p {
+  margin-top: 10px;
+  color: #94a3b8;
+}
+
+/* ===== GRID ===== */
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+/* ===== CARD ===== */
+.card {
+  background: rgba(30, 41, 59, 0.6);
+  border-radius: 18px;
+  padding: 25px;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.05);
+  transition: all 0.35s ease;
+  animation: fadeUp 0.8s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.02);
+
+  border-color: rgba(56,189,248,0.6);
+
+  box-shadow:
+    0 15px 40px rgba(0,0,0,0.5),
+    0 0 25px rgba(56,189,248,0.25),
+    0 0 60px rgba(56,189,248,0.15);
+}
+
+.card h2 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.card p {
+  color: #94a3b8;
+  font-size: 0.95rem;
+}
+
+.card a {
+  color: #38bdf8;
+  text-decoration: none;
+  position: relative;
+}
+
+.card a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0%;
+  height: 1px;
+  background: #38bdf8;
+  transition: width 0.3s;
+}
+
+.card a:hover::after {
+  width: 100%;
+}
+
+/* ===== TAG ===== */
+.tag {
+  display: inline-block;
+  margin-top: 10px;
+  margin-right: 5px;
+  padding: 5px 10px;
+  background: rgba(56,189,248,0.1);
+  border-radius: 8px;
+  font-size: 0.75rem;
+  transition: 0.3s;
+}
+
+.tag:hover {
+  background: rgba(56,189,248,0.25);
+}
+
+/* ===== FOOTER ===== */
+footer {
+  text-align: center;
+  padding: 50px 20px;
+  color: #64748b;
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
   }
-</style>
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
