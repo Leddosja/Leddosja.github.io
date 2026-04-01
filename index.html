@@ -14,12 +14,12 @@
 <!-- ===== NAVBAR ===== -->
 <nav class="navbar">
   <div class="nav-container">
-    <span class="logo">Edis's portfolio</span>
+    <span class="logo">Portfolio</span>
     <div class="nav-links">
       <a href="#">Home</a>
-      <a href="#">Projects</a>
-      <a href="#">Skills</a>
-      <a href="#">Contact</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
     </div>
   </div>
 </nav>
@@ -28,32 +28,85 @@
 <header>
   <img src="img/profile.jpg" alt="Profile" class="profile-img">
   <h1>Edis Hodja</h1>
-  <p>UniPD Student • Future Full Stack</p>
+  <p>UniPD Student • Mobile Dev • Future Full Stack</p>
 </header>
 
-<div class="container">
-  <div class="grid">
+<div class="container main-container">
+  <div class="vertical">
 
-    <div class="card">
+    <div class="card big about-highlight">
       <h2>👤 About Me</h2>
-      <p>Passionate developer focused on building clean, modern web applications and exploring AI technologies.</p>
+    
+      <div class="about-text">
+        <p>
+          I am a Computer Science student at the University of Padua with a strong interest in software development and modern technologies.
+          Through my academic path and hands-on experience, I have developed practical skills in web and mobile application development,
+          working with APIs, databases, and real-world systems.
+        </p>
+    
+        <p>
+          I enjoy building clean and efficient solutions, focusing on both functionality and user experience.
+          My background includes experience with multiple programming languages and technologies, as well as a solid foundation in algorithms,
+          networking, and software design.
+        </p>
+    
+        <p>
+          I am a motivated and curious learner, always looking to improve my skills and take on new challenges.
+          My goal is to grow as a developer and contribute to meaningful and innovative projects.
+        </p>
+      </div>
     </div>
 
-    <div class="card">
+    <div class="card" id="projects">
       <h2>💼 Projects</h2>
-      <p>
-        <a href="https://github.com/Leddosja" target="_blank">
-          View my GitHub projects →
+      <p>Some of my recent work</p>
+    
+      <div class="projects-grid">
+    
+        <!-- PROJECT 1 -->
+        <a href="https://github.com/Leddosja" target="_blank" class="project-card">
+          <div class="project-content">
+            <h3>Portfolio Website</h3>
+            <p>Personal portfolio built with modern UI and animations.</p>
+    
+            <div class="project-tags">
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>JavaScript</span>
+            </div>
+          </div>
         </a>
-      </p>
-      <div class="tag">HTML</div>
-      <div class="tag">CSS</div>
-      <div class="tag">JavaScript</div>
-      <div class="tag">MongoDB</div>
-      <div class="tag">C++</div>
+    
+        <!-- PROJECT 2 -->
+        <a href="https://github.com/Leddosja" target="_blank" class="project-card">
+          <div class="project-content">
+            <h3>Mobile App</h3>
+            <p>App with API integration and real-time data handling.</p>
+    
+            <div class="project-tags">
+              <span>Swift</span>
+              <span>API</span>
+            </div>
+          </div>
+        </a>
+    
+        <!-- PROJECT 3 -->
+        <a href="https://github.com/Leddosja" target="_blank" class="project-card">
+          <div class="project-content">
+            <h3>Database System</h3>
+            <p>Designed and implemented database with SQL & NoSQL.</p>
+    
+            <div class="project-tags">
+              <span>MongoDB</span>
+              <span>SQL</span>
+            </div>
+          </div>
+        </a>
+    
+      </div>
     </div>
 
-    <div class="card">
+    <div class="card hidden" id="certifications">
       <h2>📜 Certifications</h2>
       <p>
         <a href="https://www.credly.com/org/cisco/badge/ccna-introduction-to-networks/public_url" target="_blank">
@@ -68,12 +121,16 @@
       </p>
     </div>
 
-    <div class="card">
+    <div class="card" id="skills">
       <h2>🧠 Skills</h2>
-      <p>HTML, CSS, JavaScript, Git, Networking, C, C++, C#, SwiftUI</p>
+      <p>My technical stack</p>
+    
+      <div class="skills-grid">
+        <img src="https://skillicons.dev/icons?i=c,cpp,js,html,css,cs,swift,androidstudio,mysql,php,git,github,mongodb,cassandra,postgres,matlab,docker,vscode&perline=9" />
+      </div>
     </div>
 
-    <div class="card">
+    <div class="card hidden" id="contact">
       <h2>📫 Contact</h2>
       <p>Email: edishodja@icloud.com</p>
       <p>
@@ -87,6 +144,30 @@
 <footer>
   © 2026 Edis Hodja — Portfolio
 </footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add("show");
+        }, index * 100);
+      }
+    });
+  });
+
+  document.querySelectorAll(".hidden").forEach(el => observer.observe(el));
+</script>
+
+<script>
+  function toggleSkills() {
+    const popup = document.getElementById("skillsPopup");
+    const arrow = document.getElementById("skillsArrow");
+
+    popup.classList.toggle("active");
+    arrow.classList.toggle("open");
+  }
+</script>
 
 </body>
 </html>
