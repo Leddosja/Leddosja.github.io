@@ -210,7 +210,7 @@
     <div class="card hidden" id="certifications">
       <h2>📜 Certifications</h2>
       <p>
-        <a href="https://www.credly.com/org/cisco/badge/ccna-introduction-to-networks/public_url" target="_blank">
+        <a href="/docs/CCNA_certificate.pdf" target="_blank">
           CCNA: Introduction to Networks
         </a>
       </p>
@@ -221,7 +221,28 @@
       <p>My technical stack</p>
     
       <div class="skills-grid">
-        <img src="https://skillicons.dev/icons?i=c,cpp,js,html,css,cs,swift,androidstudio,mysql,php,git,github,mongodb,cassandra,postgres,matlab,docker,vscode&perline=9" />
+    
+        <div class="skill"><img src="https://skillicons.dev/icons?i=c"><span>C</span></div>
+        <div class="skill"><img src="https://skillicons.dev/icons?i=cpp"><span>C++</span></div>
+        <div class="skill"><img src="https://skillicons.dev/icons?i=js"><span>JavaScript</span></div>
+        <div class="skill"><img src="https://skillicons.dev/icons?i=html"><span>HTML</span></div>
+        <div class="skill"><img src="https://skillicons.dev/icons?i=css"><span>CSS</span></div>
+        <div class="skill"><img src="https://skillicons.dev/icons?i=cs"><span>C#</span></div>
+        <div class="skill"><img src="https://skillicons.dev/icons?i=swift"><span>Swift</span></div>
+        <div class="skill"><img src="https://skillicons.dev/icons?i=androidstudio"><span>Android Studio</span></div>
+        <div class="skill"><img src="https://skillicons.dev/icons?i=mysql"><span>MySQL</span></div>
+        <div class="skill"><img src="https://skillicons.dev/icons?i=php"><span>PHP</span></div>
+        <div class="skill"><img src="https://skillicons.dev/icons?i=git"><span>Git</span></div>
+        <div class="skill"><img src="https://skillicons.dev/icons?i=github"><span>GitHub</span></div>
+        <div class="skill"><img src="https://skillicons.dev/icons?i=mongodb"><span>MongoDB</span></div>
+        <div class="skill"><img src="https://skillicons.dev/icons?i=cassandra"><span>Cassandra</span></div>
+        <div class="skill"><img src="https://skillicons.dev/icons?i=postgres"><span>PostgreSQL</span></div>
+        <div class="skill"><img src="https://skillicons.dev/icons?i=visualstudio"><span>Visual Studio</span></div>
+        <div class="skill"><img src="https://skillicons.dev/icons?i=docker"><span>Docker</span></div>
+        <div class="skill"><img src="https://skillicons.dev/icons?i=vscode"><span>VS Code</span></div>
+        <div class="skill"><img src="https://skillicons.dev/icons?i=aws"><span>AWS</span></div>
+        <div class="skill"><img src="https://skillicons.dev/icons?i=net"><span>.NET</span></div>
+    
       </div>
     </div>
 
@@ -242,16 +263,22 @@
 
 <script>
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, index) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => {
-          entry.target.classList.add("show");
-        }, index * 100);
-      }
-    });
+  entries.forEach((entry, index) => {
+
+    if (entry.isIntersecting) {
+      setTimeout(() => {
+        entry.target.classList.add("show");
+      }, index * 120);
+    } else {
+      entry.target.classList.remove("show");
+    }
+
+  });
+  }, {
+    threshold: 0.2
   });
 
-  document.querySelectorAll(".hidden").forEach(el => observer.observe(el));
+  document.querySelectorAll(".card").forEach(el => observer.observe(el));
 </script>
 
 <script>
@@ -280,6 +307,33 @@
 
   // avvia quando la pagina è pronta
   window.addEventListener("load", typeEffect);
+</script>
+
+<script>
+  function updateSkillLabels() {
+    const skills = document.querySelectorAll(".skill");
+    const container = document.querySelector(".skills-grid");
+
+    const containerRect = container.getBoundingClientRect();
+    const containerMiddle = containerRect.top + containerRect.height / 2;
+
+    skills.forEach(skill => {
+      const rect = skill.getBoundingClientRect();
+      const skillCenter = rect.top + rect.height / 2;
+
+      skill.classList.remove("top", "bottom");
+
+      if (skillCenter < containerMiddle) {
+        skill.classList.add("top");
+      } else {
+        skill.classList.add("bottom");
+      }
+    });
+  }
+
+  window.addEventListener("load", updateSkillLabels);
+  window.addEventListener("scroll", updateSkillLabels);
+  window.addEventListener("resize", updateSkillLabels);
 </script>
 
 </body>
