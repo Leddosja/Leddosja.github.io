@@ -28,7 +28,7 @@
 <header>
   <img src="img/profile.jpg" alt="Profile" class="profile-img">
   <h1>Edis Hodja</h1>
-  <p>UniPD Student • Mobile Dev • Future Full Stack</p>
+  <p id="typing-text"></p>
 </header>
 
 <div class="container main-container">
@@ -262,6 +262,24 @@
     popup.classList.toggle("active");
     arrow.classList.toggle("open");
   }
+</script>
+
+<script>
+  const text = "UniPD Student • Mobile Dev • Future Full Stack";
+  const typingElement = document.getElementById("typing-text");
+
+  let index = 0;
+
+  function typeEffect() {
+    if (index < text.length) {
+      typingElement.textContent += text.charAt(index);
+      index++;
+      setTimeout(typeEffect, 80); // velocità (più basso = più veloce)
+    }
+  }
+
+  // avvia quando la pagina è pronta
+  window.addEventListener("load", typeEffect);
 </script>
 
 </body>
